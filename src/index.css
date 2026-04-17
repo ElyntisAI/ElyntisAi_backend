@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root, .dark {
+    --background: 240 15% 4%;
+    --foreground: 210 40% 95%;
+
+    --card: 240 12% 8%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 240 12% 10%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 258 100% 69%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 12% 14%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 240 10% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 185 100% 50%;
+    --accent-foreground: 240 15% 4%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 100% 50%;
+    --success-foreground: 240 15% 4%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 15% 4%;
+
+    --border: 240 10% 16%;
+    --input: 240 10% 16%;
+    --ring: var(--primary);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 14% 6%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 12% 12%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 240 10% 14%;
+    --sidebar-ring: var(--primary);
+
+    --glass-bg: 240 12% 8% / 0.6;
+    --glass-border: 240 10% 20% / 0.4;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 15% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 15% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 15% 4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 15% 4%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 45%;
+    --border: 240 5% 90%;
+    --input: 240 5% 90%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 15% 4%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 92%;
+    --sidebar-accent-foreground: 240 15% 4%;
+    --sidebar-border: 240 5% 90%;
+    --glass-bg: 0 0% 100% / 0.8;
+    --glass-border: 240 5% 90% / 0.8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: hsla(var(--glass-bg));
+    backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--glass-border));
+  }
+
+  .glass-strong {
+    background: hsla(var(--glass-bg));
+    backdrop-filter: blur(24px);
+    border: 1px solid hsla(var(--glass-border));
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px hsla(var(--primary) / 0.3), 0 0 60px hsla(var(--primary) / 0.1);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px hsla(var(--accent) / 0.3), 0 0 60px hsla(var(--accent) / 0.1);
+  }
+
+  .glow-border-purple {
+    border: 1px solid hsla(var(--primary) / 0.3);
+    box-shadow: inset 0 0 20px hsla(var(--primary) / 0.05), 0 0 15px hsla(var(--primary) / 0.1);
+  }
+
+  .glow-border-cyan {
+    border: 1px solid hsla(var(--accent) / 0.3);
+    box-shadow: inset 0 0 20px hsla(var(--accent) / 0.05), 0 0 15px hsla(var(--accent) / 0.1);
+  }
+
+  .text-gradient-purple {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(hsla(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsla(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
